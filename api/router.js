@@ -38,6 +38,16 @@ router.use('/fontlist', function (req, res, next) {
 const { getFonts }  = require("./fontlist")
 router.get('/fontlist', getFonts);
 
+// test.js
+router.use('/test', function (req, res, next) {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader('Access-Control-Allow-Methods', '*');
+    res.setHeader("Access-Control-Allow-Headers", "*");
+    next()
+});
+const getTest  = require("./test")
+router.get('/test', getTest);
+
 // allow cors requests since theyre from the extension
 router.use('/token', function (req, res, next) {
     res.setHeader("Access-Control-Allow-Origin", "*");
