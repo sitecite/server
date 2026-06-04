@@ -1,7 +1,9 @@
 const exec_mysql = require("../gen_functions/exec_mysql");
 const pool = require("../server")
 const crypto = require('crypto');
-const permittedAccounts = require("../whitelist")
+const permittedAccounts = require("../whitelist");
+const fs = require('fs');
+const yaml = require("yaml");
 require('dotenv').config()
 
 const oAuthDiscord = async (req, res) => {
@@ -80,7 +82,10 @@ const oAuthDiscord = async (req, res) => {
     const userFull = await userReq.json()
 
     // check if user is on whitelist
-    if (process.env.WHITELIST == "true") {
+
+    const yamlConfig = await fs.readFileSync("./config.yaml", 'utf8')
+    const whitelist = yaml.parse(yamlConfig).whitelist
+    if (whitelist === true) {
         if (!permittedAccounts.discord.includes(userFull.id)) {
             // block unwanted accounts from signing up
             res.status(403).send(`
