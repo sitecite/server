@@ -131,7 +131,7 @@ async function fetchStyles() {
 
 async function main() {
 	const hello = await fetchUrl("../api/hello")
-	console.log(hello)
+	document.getElementById("copy-button").disabled = true
 	if(hello.success) {
 
 		// configure what things show up
