@@ -1,3 +1,6 @@
+const fs = require('fs');
+const yaml = require('yaml');
+
 require('dotenv').config()
 
 const getHello = async (req, res) => {
@@ -11,15 +14,13 @@ const getHello = async (req, res) => {
         discordEnabled = true
     }
 
-    var usernameEnabled = false
-    if (process.env.USERNAME_ACCOUNTS === "true") {
-        usernameEnabled = true
-    }
+    const yamlConfig = await fs.readFileSync("./config.yaml", 'utf8')
+    const username_accounts = yaml.parse(yamlConfig).username_accounts
 
     const helloJSON = {
         google: false,
         discord: discordEnabled,
-        username: usernameEnabled
+        username: username_accounts
     }
 
     res.status(200).json({
