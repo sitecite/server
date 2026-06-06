@@ -110,8 +110,6 @@ const createImage = async (req, res) => {
         style = styleReq[0]
     }
 
-    console.log(style)
-
     const url = linkReq[0].link
     const host = new URL(url).hostname
     const text = linkReq[0].text.replace("\n", "")
@@ -154,7 +152,110 @@ const createImage = async (req, res) => {
 
 };
 
-module.exports = createImage
+const createImageFromText = async (req, res) => {
+    if (!req.headers.authorization) {
+        return res.status(401).json({
+            success: false,
+            message: "No credentials sent. (empty authorization headers?)"
+        });
+        return
+    }
+    if (!req.body || !req.body.text || !req.body.url) {
+        res.status(400).json({
+            success: false,
+            message: "No text and/or URL parsed",
+        })
+        return
+    }
+
+    // the parsed selection text and url
+    var text = req.body.text
+    const url = req.body.url
+
+    // check if token is valid
+    const token = req.headers.authorization.replace("Bearer ", "")
+    console.log(token)
+    // hash it to check if its in database
+    const tokenHash = crypto.createHash('sha256').update(token).digest('hex')
+
+    const tokenSearch = await exec_mysql.executeQuery(null, `
+            SELECT user_id, expire 
+            FROM user_ext_tokens
+            WHERE token = ? AND expire > ?
+        `, [tokenHash, Math.round(Date.now() / 1000)], pool)
+
+    if (!tokenSearch.length) {
+        // no matching tokens found, user is not signed in
+        res.status(401).json({
+            success: false,
+            message: "Invalid token. Maybe it expired?",
+        })
+        return
+    }
+
+    const user_id = tokenSearch[0].user_id
+    
+    initCanvas()
+    
+    // fetch style
+    var style
+
+    const styleReq = await exec_mysql.executeQuery(null, `
+            SELECT bg_color, color, font
+            FROM user_customisation
+            WHERE user_id = ?    
+        `, [user_id], pool)
+
+    if (!styleReq.length || !styleReq[0].font || !styleReq[0].color || !styleReq[0].bg_color) {
+        // default style
+        style = {
+            font: "Atkinson Hyperlegible Next",
+            color: "000000",
+            bg_color: "f6f6f6",
+        }
+    } else {
+        style = styleReq[0]
+    }
+
+    const host = new URL(url).hostname
+    text = text.replace("\n", "")
+
+    initCanvas("#" + style.bg_color)
+
+    drawCenteredText(
+        ctx,
+        text,   // main quote
+        canvas.width,
+        canvas.height,
+        {
+            font: '22px ' + style.font,
+            fillStyle: "#" + style.color,
+            maxWidth: 400,
+            blockAlign: 'center',
+            lineAlign: 'left',
+            topLabel: {
+                text: `from ${host}:`,
+                font: 'italic 16px ' + style.font,
+                fillStyle: "#" + style.color,
+                marginBottom: 8
+            },
+            autoFit: {
+                enabled: true,
+                minFontSizeMain: 12,
+                minFontSizeLabel: 10,
+                step: 0.05
+            }
+
+        }
+    );
+
+    // output the image
+    res.setHeader('Content-Type', 'image/png');
+    const buffer = canvas.toBuffer('image/png');
+    res.send(buffer);
+}
+
+module.exports = { createImage, createImageFromText }
 
 /**
  * Draws vertically centered text on a canvas with wrapping, \n support,
