@@ -17,7 +17,7 @@ router.use('/style', function (req, res, next) {
         // an options request might be sent by the browser to check if everything is okay?
         res.setHeader("Access-Control-Allow-Origin", "*");
         res.setHeader('Access-Control-Allow-Methods', '*');
-        res.setHeader("Access-Control-Allow-Headers", "Authorization, *");
+        res.setHeader("Access-Control-Allow-Headers", "*, Authorization");
     }
     next();
 
@@ -26,8 +26,15 @@ const { getStyle, postStyle} = require("./style")
 router.get('/style', getStyle);
 router.post('/style', postStyle);
 
-const createImage = require("./image")
+router.use('/image', function (req, res, next) {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader('Access-Control-Allow-Methods', '*');
+    res.setHeader("Access-Control-Allow-Headers", "*, Authorization");
+    next()
+});
+const { createImage, createImageFromText } = require("./image")
 router.get('/image/:code', createImage);
+router.post('/image', createImageFromText);
 
 router.use('/fontlist', function (req, res, next) {
     res.setHeader("Access-Control-Allow-Origin", "*");
