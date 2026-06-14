@@ -1,21 +1,25 @@
-# sitecite
+# sitecite (server)
 
-Welcome to sitecite! If you wish to merely check it, use [the website](https://sitecite.dantenl.com). It's currently available for Firefox, [download it from the Mozilla store!](https://addons.mozilla.org/en-GB/firefox/addon/sitecite/)
+Welcome to sitecite! If you wish to merely check it out, use [the website](https://sitecite.dantenl.com). It's currently available for Firefox, [download it from the Mozilla store!](https://addons.mozilla.org/en-GB/firefox/addon/sitecite/)
 
-This repo is mainly intended for if you wish to self host AND build it from scratch! If you don't want the latter: a Docker version is coming soon.
+This repo is mainly intended for if you wish to self host AND build it from scratch! If you don't want the latter: check out the [Docker version](https://github.com/sitecite/server-docker).
 
-**Need help?** You can join the [Discord server](https://discord.gg/rPBE2B7dng) or create an issue on the Github page.
+**Need help?** You can join the [Discord server](https://discord.gg/rPBE2B7dng) or create an issue on the Github Issues page.
 
 # Features
+
+![Image showing the Firefox browser with the homepage page of sitecite at sitecite.dantenl.com](https://sitecite.dantenl.com/screenshots/firefox_sitecite_website.png)
 
 sitecite allows you to share (and customise!) quotations from websites. For example, if you're having a conversation on Discord and need to reference something from Wikipedia, you can use sitecite for this! Simply highlight the text, press the keybind on the extension or right click and click "Quote selected text" and you'll get a handy-dandy link that you can share with your friends that shows your selected text through an image and links directly to your Wikipedia page!
 
 # Installation
 
+> 💡 **PRO TIP:** You should check out the Docker version! Installation via Docker is a whole lot easier. It's available at [github.com/sitecite/server-docker](https://github.com/sitecite/server-docker).
+
 If you really want to, you can build it all yourself. **I don't recommend it!**
 However, if you can't read or are really stubborn, you'll need the following on your system.
 
-Quick note: installation instructions are written for macOS/Linux. However, it *should* be applicable to Windows as well.
+Quick note: installation instructions are written for macOS/Linux. However, it *should* be applicable to Windows as well. You may run into issues with cURL however as Windows (for some reason) uses a different format.
 
 ## Requirements
 
@@ -31,6 +35,7 @@ To start off, you should clone the repo.
 
 ```
 mkdir sitecite &&
+cd sitecite &&
 git clone https://github.com/sitecite/server/
 ```
 
@@ -69,3 +74,5 @@ This should give you something like this in return:
 ```
 
 If you got something that looks like a JSON, then all is well! :D
+
+After which, you'll need to get your website running on the chosen port.
