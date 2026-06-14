@@ -1,4 +1,4 @@
-# v1.3.0
+# [v1.3.0](https://github.com/sitecite/server/pull/4) [2026-6-14]
 
 * sitecite now gives a fancier error message when linked to an invalid code
 * It is now possible to view shortened links, and to remove them as well or copy them again
