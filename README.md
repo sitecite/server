@@ -1,6 +1,6 @@
 # sitecite (server)
 
-Welcome to sitecite! If you wish to merely check it out, use [the website](https://sitecite.dantenl.com). It's currently available for Firefox, [download it from the Mozilla store!](https://addons.mozilla.org/en-GB/firefox/addon/sitecite/)
+Welcome to sitecite! If you wish to merely check it out, use [the website](https://sitecite.dantenl.com). It's currently available for [Firefox](https://addons.mozilla.org/en-GB/firefox/addon/sitecite/) and [Chrome](https://chromewebstore.google.com/detail/nhadodoajmnpakkgidheifkfibphlghm/).
 
 This repo is mainly intended for if you wish to self host AND build it from scratch! If you don't want the latter: check out the [Docker version](https://github.com/sitecite/server-docker).
 
@@ -64,7 +64,7 @@ This should give you something like this in return:
 ```json
 {
     "success":true,
-    "message":"hii! :3",
+    "message":"It's working!",
     "data": {
         "google":false,
         "discord":true,
