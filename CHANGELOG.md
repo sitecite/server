@@ -1,3 +1,13 @@
+# [v1.3.1](https://github.com/sitecite/server/pull/5) [2026-6-16]
+
+* Added links to the [Chrome extension](https://chromewebstore.google.com/detail/sitecite/nhadodoajmnpakkgidheifkfibphlghm)
+* Depcrecated endpoint `/api/test` in favour of `/api/hello`. The `/api/test` endpoint will continue to work though, for the time being. The reason for deprecation is that both of these endpoints are so similar. It's easier to manage if they would be unified.
+
+## Bugs fixed
+
+* Fixed an issue where long URLs in the recently shortened URL section would make the grid wonky, by truncating long URLs
+* If you had generated a number of links that is divisible by 10, the "Load more" button would show up even if there were no links to be generated.
+
 # [v1.3.0](https://github.com/sitecite/server/pull/4) [2026-6-14]
 
 * sitecite now gives a fancier error message when linked to an invalid code
