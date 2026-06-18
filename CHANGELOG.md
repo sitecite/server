@@ -1,3 +1,21 @@
+# [v1.3.2](https://github.com/sitecite/server/pull/6) [2026-6-18]
+
+* Updated the privacy policy
+    * added a clear disclaimer that this policy does not apply to self‑hosted or third‑party instances
+    * added “Who we are” section identifying the data controller
+    * added further clarity on the data we store, including extension behaviour
+    * added cookies section (HTTPS‑signed session cookies, one‑hour maximum)
+    * added further clarity regarding the use of third‑party sign‑ins (Google and Discord), with specific Google API data usage details
+    * added service providers section (Cloudflare)
+    * added legal basis for processing
+    * added data retention details
+    * added your rights (access, erasure, portability, etc.)
+    * added data security statement
+    * added international transfers section (UK hosting)
+    * added children’s privacy statement
+    * added how we will notify you of changes to this policy
+    * fixed typographical issues and improved readability throughout
+
 # [v1.3.1](https://github.com/sitecite/server/pull/5) [2026-6-16]
 
 * Added links to the [Chrome extension](https://chromewebstore.google.com/detail/sitecite/nhadodoajmnpakkgidheifkfibphlghm)
