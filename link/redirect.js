@@ -5,7 +5,8 @@ const pool = require('../server');
 const path = require('path');
 const fs = require('fs');
 const yaml = require('yaml');
-require('dotenv').config()
+const logger = require("../gen_functions/logger")
+require('dotenv').config({ quiet: true})
 
 async function redirectUser(req, res) {
     if(!req.params) {
@@ -83,7 +84,7 @@ async function redirectUser(req, res) {
                 content = content.replace(/\{linkText\}/g, "Accept the potential risk and continue.");
             }
         } catch(e)  {
-            console.error("Could not check URLHaus!", e)
+            logger.error("Could not check URLHaus!", e)
         }
     }
 

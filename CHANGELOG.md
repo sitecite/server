@@ -1,4 +1,11 @@
-# [v1.3.2](https://github.com/sitecite/server/pull/6) [2026-6-18]
+# [v1.4.0](https://github.com/sitecite/server/pull/7) [2026-06-20]
+
+* Added better logging
+* Added some better code clarity
+
+Most files have been updated this time, please let me know if you discover any bugs!
+
+# [v1.3.2](https://github.com/sitecite/server/pull/6) [2026-06-18]
 
 * Updated the privacy policy
     * added a clear disclaimer that this policy does not apply to self‑hosted or third‑party instances
@@ -16,7 +23,7 @@
     * added how we will notify you of changes to this policy
     * fixed typographical issues and improved readability throughout
 
-# [v1.3.1](https://github.com/sitecite/server/pull/5) [2026-6-16]
+# [v1.3.1](https://github.com/sitecite/server/pull/5) [2026-06-16]
 
 * Added links to the [Chrome extension](https://chromewebstore.google.com/detail/sitecite/nhadodoajmnpakkgidheifkfibphlghm)
 * Depcrecated endpoint `/api/test` in favour of `/api/hello`. The `/api/test` endpoint will continue to work though, for the time being. The reason for deprecation is that both of these endpoints are so similar. It's easier to manage if they would be unified.
@@ -26,7 +33,7 @@
 * Fixed an issue where long URLs in the recently shortened URL section would make the grid wonky, by truncating long URLs
 * If you had generated a number of links that is divisible by 10, the "Load more" button would show up even if there were no links to be generated.
 
-# [v1.3.0](https://github.com/sitecite/server/pull/4) [2026-6-14]
+# [v1.3.0](https://github.com/sitecite/server/pull/4) [2026-06-14]
 
 * sitecite now gives a fancier error message when linked to an invalid code
 * It is now possible to view shortened links, and to remove them as well or copy them again
@@ -38,13 +45,13 @@
 * On the homepage, users can run `resetStyles()` to temporarily change the background and text colour to something readable
 * The user ID and instance are outputted to the console, allowing users to get help more easily
 
-# [v1.2.0](https://github.com/sitecite/server/pull/2) [2026-6-6]
+# [v1.2.0](https://github.com/sitecite/server/pull/2) [2026-06-06]
 
 * Added support for creating images with just text
 * Added CORS policies for `/api/image` endpoint
 * Updated package.json to v1.2.0
 
-# [v1.1.0](https://github.com/sitecite/server/pull/1) [2026-5-4]
+# [v1.1.0](https://github.com/sitecite/server/pull/1) [2026-06-04]
 
 *I didn't originally create release notes; these have been created afterwards*
 
