@@ -1,3 +1,10 @@
+# [v1.4.0](https://github.com/sitecite/server/pull/7) [2026-6-]
+
+* Added better logging
+* Added some better code clarity
+
+Most files have been updated this time, please let me know if you discover any bugs!
+
 # [v1.3.2](https://github.com/sitecite/server/pull/6) [2026-6-18]
 
 * Updated the privacy policy
