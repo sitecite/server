@@ -1,4 +1,4 @@
-# [v.1.5.0](https://github.com/sitecite/server/pull/8) [2026-06-23]
+# [v.1.5.0](https://github.com/sitecite/server/pull/9) [2026-06-23]
 
 * Added character escaping to the redirection page
 * Added the user's background as a theme colour; meaning shared URLs will become even fancier when it is shared!
