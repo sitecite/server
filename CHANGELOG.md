@@ -1,3 +1,9 @@
+# [v.1.5.0](https://github.com/sitecite/server/pull/9) [2026-06-23]
+
+* Added character escaping to the redirection page
+* Added the user's background as a theme colour; meaning shared URLs will become even fancier when it is shared!
+* Instead of `.env` and `config.yaml`, there are now `.env.example` and `example.config.yaml` files. Mainly to make local development easier.
+
 # [v1.4.0](https://github.com/sitecite/server/pull/7) [2026-06-20]
 
 * Added better logging

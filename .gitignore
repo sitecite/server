@@ -146,11 +146,11 @@ vite.config.ts.timestamp-*
 
 #* Main special files by sitecite
 
-config.yaml
 # config file
-.github.md
-# the github description
-package-lock.json
+config.yaml
 # nodejs package lock
-.DS_Store
+package-lock.json
+# the github description
+.github.md
 # macos created file, definitely not needed
+.DS_Store
