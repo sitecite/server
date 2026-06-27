@@ -7,6 +7,9 @@ const yaml = require("yaml");
 const logger = require("../gen_functions/logger")
 require('dotenv').config({ quiet: true})
 
+const yamlConfig = yaml.parse(fs.readFileSync("./config.yaml", 'utf8'));
+const whitelist = yamlConfig.whitelist
+
 const signIn = async (req, res) => {
     // handle a sign in request
 
@@ -147,7 +150,7 @@ const signUp = async (req, res) => {
     } 
 
     // check if whitelisted
-    if(process.env.WHITELIST == "true") {
+    if (whitelist === true) {
         if (!permittedAccounts.general.includes(username)) {
             // block unwanted accounts from signing up
             res.status(403).json({
