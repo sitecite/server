@@ -222,24 +222,71 @@ function drawCenteredText(ctx, text, canvasWidth, canvasHeight, options = {}) {
         ctx.font = contextFont
         const paragraphs = str.split('\n')
         const wrapped = []
+
         for (const para of paragraphs) {
             if (para === '') {
                 wrapped.push('')
                 continue
             }
+
             const words = para.split(' ')
             let line = ''
-            for (const word of words) {
-                const test = line ? `${line} ${word}` : word
-                if (ctx.measureText(test).width > contextMaxWidth && line !== '') {
-                    wrapped.push(line)
-                    line = word
+
+            for (let i = 0; i < words.length; i++) {
+                const word = words[i]
+                let testLine = line ? `${line} ${word}` : word
+
+                // if the word fits on the current line, add it
+                if (ctx.measureText(testLine).width <= contextMaxWidth) {
+                    line = testLine
                 } else {
-                    line = test
+                    // it doesn't fit. If the line already has words, push the line and start fresh.
+                    if (line !== '') {
+                        wrapped.push(line)
+                        line = ''
+                        testLine = word
+                    }
+
+                    // check if the word on its own is wider than the max width
+                    if (ctx.measureText(word).width > contextMaxWidth) {
+                        // word is too wide: break it down character-by-character
+                        let tempWord = word
+                        while (tempWord.length > 0) {
+                            let charLine = ''
+                            let j = 0
+
+                            // build a line letter by letter until it hits the max width
+                            while (j < tempWord.length && ctx.measureText(charLine + tempWord[j]).width <= contextMaxWidth) {
+                                charLine += tempWord[j]
+                                j++
+                            }
+
+                            // if canvas is too narrow for even 1 char, force 1 char
+                            if (j === 0) {
+                                charLine = tempWord[0]
+                                j = 1
+                            }
+
+                            if (j < tempWord.length) {
+                                // still more of the long word left, push this chunk and keep looping
+                                wrapped.push(charLine)
+                                tempWord = tempWord.slice(j)
+                            } else {
+                                // reached the end of the long word, keep remainder for the next normal word
+                                line = charLine
+                                break
+                            }
+                        }
+                    } else {
+                        // word fits on its own new line
+                        line = word
+                    }
                 }
             }
-            if (line !== '' || wrapped.length === 0) wrapped.push(line)
+            // push any remaining text at the end of the paragraph
+            if (line !== '') wrapped.push(line)
         }
+
         ctx.restore()
         return wrapped
     }
