@@ -148,8 +148,6 @@ vite.config.ts.timestamp-*
 
 # config file
 config.yaml
-# nodejs package lock
-package-lock.json
 # the github description
 .github.md
 # macos created file, definitely not needed
