@@ -1,5 +1,5 @@
 const exec_mysql = require("../gen_functions/exec_mysql");
-const pool = require("../server")
+const pool = require("../db/pool")
 const crypto = require('crypto');
 const permittedAccounts = require("../whitelist");
 const fs = require('fs');
@@ -17,7 +17,7 @@ const signIn = async (req, res) => {
     // check if username accounts are enabled
     const username_accounts = yaml.parse(yamlConfig).username_accounts
     
-    if (!username_accounts === true) {
+    if (username_accounts === false) {
         // signing in with username and password is disabled
         res.status(401).json({
             success: false,
@@ -104,7 +104,7 @@ const signUp = async (req, res) => {
     const yamlConfig = await fs.readFileSync("./config.yaml", 'utf8')
     const username_accounts = yaml.parse(yamlConfig).username_accounts
 
-    if (!username_accounts === true) {
+    if (username_accounts === false) {
         // signing in with username and password is disabled
         res.status(401).json({
             success: false,

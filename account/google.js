@@ -1,5 +1,5 @@
 const exec_mysql = require("../gen_functions/exec_mysql");
-const pool = require("../server")
+const pool = require("../db/pool")
 const crypto = require('crypto');
 const permittedAccounts = require("../whitelist");
 const fs = require('fs');
