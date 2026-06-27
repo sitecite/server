@@ -1,7 +1,7 @@
 > [!NOTE]  
 > Are you running into any bugs? Do you have a suggestion? The [Discord server](https://sitecite.dantenl.com/r/discord) is the place!
 
-# [v1.6.0](https://github.com/sitecite/server/pull/10) [2026-06-27]
+# [v1.5.1](https://github.com/sitecite/server/pull/10) [2026-06-27]
 
 * Optimised code further
 * Added a credits page
