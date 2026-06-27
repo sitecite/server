@@ -1,3 +1,26 @@
+> [!NOTE]  
+> Are you running into any bugs? Do you have a suggestion? The [Discord server](https://sitecite.dantenl.com/r/discord) is the place!
+
+# [v1.6.0](https://github.com/sitecite/server/pull/10) [2026-06-27]
+
+* Optimised code further
+    - Authentications are now done via middleware instead of per endpoint on `/api/`
+    - Combined various MySQL statemtns into one
+    - Removed some lines from the CSS file
+* Added a [credits page](https://sitecite.dantenl.com/credits)
+* Instead of hard-coding some URLs, they are now managed via a single redirector. For example, a redirect to the Discord server would now be located at https://sitecite.dantenl.com/r/discord, instead of directly linking to the Discord server
+* Improved logging to prevent leaking some private information
+* The github repo now includes the `package-lock.json` file.
+* The reset button is now always visible
+
+## Bugs fixed
+
+* Prevented race conditions for generating images
+* Fixed an issue where long strings (for example with code) would be overflowing in both image generation and the overview of linked files
+* Fixed an issue where the whitelist was broken for username accounts due to the switch to the `config.yaml` file
+* Moved the MySQL pool out of the `server.js` file to prevent issues
+* Removed `node` from the `package.json` file.
+
 # [v.1.5.0](https://github.com/sitecite/server/pull/9) [2026-06-23]
 
 * Added character escaping to the redirection page
