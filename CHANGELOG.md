@@ -1,3 +1,12 @@
+> [!NOTE]  
+> Are you running into any bugs? Do you have a suggestion? The [Discord server](https://sitecite.dantenl.com/r/discord) is the place!
+
+# [v1.6.0](https://github.com/sitecite/server/pull/10) [2026-06-27]
+
+* Optimised code further
+* Added a credits page
+* Instead of hard-coding some URLs, they are now managed via a single redirector. For example, a redirect to the Discord server would now be located at https://sitecite.dantenl.com/r/discord, instead of directly linking to the Discord server
+
 # [v.1.5.0](https://github.com/sitecite/server/pull/9) [2026-06-23]
 
 * Added character escaping to the redirection page
