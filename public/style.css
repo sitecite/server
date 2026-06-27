@@ -217,3 +217,11 @@ kbd {
     display: inline-flex;
     gap: 2px;
 }
+
+
+/* constant class, one that never changes to the fancy background colours */
+.constant {
+    background-color: #fff;
+    color: #000;
+    border-color: #000;
+}
