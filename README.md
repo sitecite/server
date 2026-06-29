@@ -36,12 +36,11 @@ You need to have the following ready to go on your system:
 To start off, you should clone the repo.
 
 ```
-mkdir sitecite &&
-cd sitecite &&
-git clone https://github.com/sitecite/server/
+git clone https://github.com/sitecite/server/ sitecite-server
+cd sitecite-server
 ```
 
-This will first create a directory named `sitecite` and then it will place the files into the directory.
+This will first create a directory named `sitecite-server` (you can change this if you want to of course) and then it will place the files into the directory. It will then put you into the directory for you to proceed to the next step. 
 
 After which, you can run `npm install` and it will read out the `package.json` file and it will install everything you need! How convenient. Thanks Node!
 
